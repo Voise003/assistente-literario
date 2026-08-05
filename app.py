@@ -75,6 +75,9 @@ if analisar:
     st.divider()
 
 st.subheader("📚 Histórico")
+if st.button("🗑️ Limpar histórico"):
+    st.session_state.historico = []
+    st.rerun()
 
 if not st.session_state.historico:
     st.info("Nenhuma análise realizada nesta sessão.")
