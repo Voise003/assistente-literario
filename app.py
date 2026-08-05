@@ -6,14 +6,21 @@ from analise import gerar_analise
 
 st.set_page_config(
     page_title="Assistente Literário",
-    page_icon="📚"
+    page_icon="📚",
+    layout="centered"
 )
 
-st.title("Meu Assistente Literário")
+st.title("Assistente Literário")
 
-st.write(
-    "Digite o nome de uma obra para receber uma análise literária estruturada."
+st.markdown(
+    """
+Explore obras literárias por meio de análises estruturadas.
+
+Escolha o tipo de análise, informe o nome da obra e clique em **Analisar**.
+"""
 )
+
+st.divider() 
 
 livro = st.text_input(
     "Nome do livro",
@@ -33,7 +40,11 @@ tipo_analise = st.selectbox(
 
 prompt = PROMPTS[tipo_analise]
 
-analisar = st.button("Analisar")
+analisar = st.button(
+    "Analisar obra",
+    type="primary",
+    use_container_width=True
+)
 
 if analisar:
     if not livro.strip():
