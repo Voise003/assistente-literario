@@ -1,6 +1,6 @@
 import streamlit as st
 
-
+from prompts import PROMPTS
 from analise import gerar_analise
 
 
@@ -31,6 +31,8 @@ tipo_analise = st.selectbox(
     ]
 )
 
+prompt = PROMPTS[tipo_analise]
+
 analisar = st.button("Analisar")
 
 if analisar:
@@ -38,7 +40,7 @@ if analisar:
         st.warning("Digite o nome do livro.")
     else:
         with st.spinner("Preparando a análise..."):
-            resultado = gerar_analise(livro)
+            resultado = gerar_analise(livro, prompt)
 
         st.success("Análise concluída.")
         st.markdown(resultado)

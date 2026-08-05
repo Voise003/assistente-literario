@@ -1,27 +1,50 @@
-def gerar_analise(livro):
-    return f"""
-## 📖 Análise de {livro}
+def gerar_analise(livro, prompt):
 
-### Contexto histórico
+    if "Resumo" in prompt:
+        return f"""
+# 📖 Resumo de {livro}
 
-Esta seção apresentará o contexto histórico e cultural relacionado à obra.
+Esta é uma simulação de um resumo da obra.
+"""
 
-### Temas principais
+    elif "Personagens" in prompt:
+        return f"""
+# 👥 Personagens de {livro}
 
-- Conflitos humanos
-- Relações sociais
-- Transformação dos personagens
-- Questões morais e existenciais
+Aqui aparecerão os principais personagens da obra.
+"""
 
-### Personagens
+    elif "Temas" in prompt:
+        return f"""
+# 🎭 Temas de {livro}
 
-Aqui serão apresentados os principais personagens e seus papéis na narrativa.
+Aqui aparecerão os principais temas da obra.
+"""
 
-### Simbolismos
+    elif "Simbolismos" in prompt:
+        return f"""
+# 🔎 Simbolismos de {livro}
 
-Esta seção mostrará possíveis símbolos presentes na obra e seus significados.
+Aqui aparecerão os simbolismos presentes na obra.
+"""
 
-### Observação
+    else:
+        return f"""
+# 📚 Análise completa de {livro}
 
-Esta é uma análise simulada. Futuramente, ela será substituída por uma análise gerada por inteligência artificial.
+## Contexto histórico
+
+Em breve será substituído pela IA.
+
+## Temas
+
+...
+
+## Personagens
+
+...
+
+## Simbolismos
+
+...
 """
