@@ -56,3 +56,11 @@ if analisar:
         st.success("Análise concluída.")
         with st.container(border=True):
             st.markdown(resultado)
+
+    st.download_button(
+    label="⬇️ Baixar análise",
+    data=resultado,
+    file_name=f"analise_{livro}.md",
+    mime="text/markdown",
+    use_container_width=True
+)
