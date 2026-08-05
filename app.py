@@ -54,4 +54,5 @@ if analisar:
             resultado = gerar_analise(livro, prompt)
 
         st.success("Análise concluída.")
-        st.markdown(resultado)
+        with st.container(border=True):
+            st.markdown(resultado)
