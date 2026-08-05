@@ -3,6 +3,8 @@ import streamlit as st
 from prompts import PROMPTS
 from analise import gerar_analise
 
+if "historico" not in st.session_state:
+    st.session_state.historico = []
 
 st.set_page_config(
     page_title="Assistente Literário",
@@ -52,6 +54,11 @@ if analisar:
     else:
         with st.spinner("Preparando a análise..."):
             resultado = gerar_analise(livro, prompt)
+            st.session_state.historico.append({
+            "livro": livro,
+            "tipo": tipo_analise,
+            "resultado": resultado
+})
 
         st.success("Análise concluída.")
         with st.container(border=True):
@@ -64,3 +71,14 @@ if analisar:
     mime="text/markdown",
     use_container_width=True
 )
+    
+    st.divider()
+
+st.subheader("📚 Histórico")
+
+if not st.session_state.historico:
+    st.info("Nenhuma análise realizada nesta sessão.")
+else:
+    for item in reversed(st.session_state.historico):
+        with st.expander(f"{item['livro']} - {item['tipo']}"):
+            st.markdown(item["resultado"])
